@@ -24,6 +24,8 @@ The user will be asked to input the following:
 - The csv of HubSpot CRM (Contacts) data.
 - The csv of HubSpot Notes data (meetings).
 
+___Note:___ sample data available upon request.
+
 ### Rationale and Mofidications
 These scripts are written to provide consistently high-quality data in the absence of centralized data management infrastructure during a fast-paced electoral campaign. Note these scripts are practically designed to be interactive and "talkative" (significant use of `print`) for: 
 - execution and troubleshooting by multiple teammates who have limited comfort in Python
