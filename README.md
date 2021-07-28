@@ -9,4 +9,4 @@ Description: This is a public repo containing samples of code, intended for shar
 
 
 ### *Repo Under Construction*
-More example code will continue to be added over time
+More example code will continue to be added over time.
