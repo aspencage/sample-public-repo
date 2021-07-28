@@ -1,5 +1,8 @@
 # sample-public-repo
-Description: This is a public repo containing samples of code, intended for sharing with potential future collaborators. 
+**Description**: This is a public repo containing samples of code, intended for sharing with potential future collaborators. 
+
+
+
 
 ### Folder: Dashboard Mgmt Refactor_PUB
 
