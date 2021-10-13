@@ -8,6 +8,8 @@
 
 **Demonstrates**: machine learning models, regression models, exploratory statistics, text-to-data/content analysis, data gymnastics.
 
+**Package requirements**: `gensim == 4.0.1` and `statsmodels == 0.12.2` are required packages that may not already be installed on the typical Python workstation.
+
 **Future updates**: Will provide a more thorough analysis from real data with a dummy political issue (e.g., coffee, puppies), rather than investigating for climate here, where pre-publication data protections are necessary.
 
 
