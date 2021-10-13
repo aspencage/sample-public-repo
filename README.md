@@ -4,11 +4,13 @@
 
 ### Folder: climate_tweet_LDA
 
-**Description**: Python scripts developed for topic modeling of Twitter posts by down-ballot political candidates during the 2020 election cycle. This can be run out of the box with the `lda_set_and_run.py script`, which will run a Latent Dirichlet Machine topic model and perform logistic regressions for all topics found using example predictors. These scripts and sample data are a small example from ongoing academic research into candidate issue messaging. Additional sample of statistics in the `__name__ == '__main__'` code block of `lda_processing_results.py`.
+**Description**: Python scripts developed for topic modeling of Twitter posts by down-ballot political candidates during the 2020 election cycle. 
+
+These scripts and sample data are a small example from ongoing academic research into candidate issue messaging. This can be run out of the box with the `lda_set_and_run.py script`, which will run a Latent Dirichlet Machine topic model and perform logistic regressions for all topics found using example predictors. A command line prompt (printed in the code) may be required to experience the interactive LDA results because of a known issue in gensim. Additional sample of statistics in the `__name__ == '__main__'` code block of `lda_processing_results.py`.
 
 **Demonstrates**: machine learning models, regression models, exploratory statistics, text-to-data/content analysis, data gymnastics.
 
-**Package requirements**: `gensim == 4.0.1` and `statsmodels == 0.12.2` are required packages that may not already be installed on the typical Python workstation.
+**Package requirements**: `gensim == 4.0.1`, `statsmodels == 0.12.2`, and `nltk == 3.6.1` are required packages that may not already be installed on the typical Python workstation.
 
 **Future updates**: Will provide a more thorough analysis from real data with a dummy political issue (e.g., coffee, puppies), rather than investigating for climate here, where pre-publication data protections are necessary.
 
