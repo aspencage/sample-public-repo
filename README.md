@@ -1,5 +1,5 @@
 # sample-public-repo
-**Description**: This is a public repo containing samples of code, intended primarily for sharing with potential future collaborators.
+**Description**: This is a personal public repo containing samples of code, intended primarily for sharing with potential future collaborators.
 
 
 ### Folder: climate_tweet_LDA
