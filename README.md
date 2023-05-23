@@ -1,8 +1,28 @@
 # sample-public-repo
-**Description**: This is a personal public repo containing samples of code, intended primarily for sharing with potential future collaborators.
+**Description**: This is a personal public repo containing samples of code, intended primarily for sharing with potential future collaborators. Repo author has rights to all code included here. Most code written between June 2021 and May 2023 is IP owned externally, and therefore snippets of this are not included.
 
 
-### Folder: climate_tweet_LDA
+### Directory: shell-scripting (may 2023)
+
+**Description**: A set of Shell scripts to support the use of a cloud-based supercomputer (AWS EC2 GPU instance). `orbweave.sh` in particular provides a set of simple wrapper functions to "turnkey" interact with their instance, allowing them to spend more time running analysis and less on instance management.
+
+**Demonstrates**: shell scripting/command line, efficient helper functions.
+
+**Package requirements**: This should work in any UNIX terminal. Actual use will require adding AWS EC2 on-demand Instance ID and Security Group ID to `config_ow.sh` and having authenticated in the AWS Command Line Interface. 
+
+*Last updated*: 21 May 2023
+
+
+
+### Directory: technoeconomic-simulator (nov 2021)
+
+**Description**: Python snippets arbitrary selected from a technoeconomic simulator package, developed while learning the principles of object-oriented programming. `fluxes.py` and `some_parts.py`, in particular, contain several simple classes, as examples. 
+
+**Demonstrates**: object-oriented programming (OOP).
+
+
+
+### Directory: climate-ml-text-analysis (june 2021)
 
 **Description**: Python scripts developed for topic modeling of Twitter posts by down-ballot political candidates during the 2020 election cycle. 
 
@@ -10,12 +30,13 @@ These scripts and sample data are a small example from ongoing academic research
 
 **Demonstrates**: machine learning models, regression models, exploratory statistics, text-to-data/content analysis, data gymnastics.
 
-**Package requirements**: `gensim == 4.0.1`, `statsmodels == 0.12.2`, and `nltk == 3.6.1` are required packages that may not already be installed on the typical Python workstation.
+**Package requirements**: `gensim == 4.0.1`, `statsmodels == 0.12.2`, and `nltk == 3.6.1` are required packages that may not already be installed in your Python environment.
 
-**Future updates**: Will provide a more thorough analysis from real data with a dummy political issue (e.g., coffee, puppies), rather than investigating for climate here, where pre-publication data protections are necessary.
+**Future updates**: Potential to provide a more thorough analysis from real data with a dummy political issue (e.g., coffee, puppies), rather than investigating for climate here, where pre-publication data protections are necessary.
 
 
-### Folder: dashboard_data_mgmt
+
+### Directory: dashboard-data-mgmt (sep 2020)
 
 **Description**: A pipeline of Python scripts developed as a practical approach to clean and merge data lacking common ID system. Applied for periodic data upload to Google Sheets during a fast-paced 2020 election cycle collaboration. 
 
@@ -23,4 +44,4 @@ These scripts and sample data are a small example from ongoing academic research
 
 
 ### *Repo Under Construction*
-More example code will continue to be added over time and can be shared bilaterally on request. 
+This is a sporadically-updated GitHub repository. More example code will continue to be added over time and can be shared bilaterally on request. 
