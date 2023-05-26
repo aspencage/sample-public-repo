@@ -4,15 +4,15 @@
 
 ### Directory: blackjack (may 2023)
 
-**Description**: A Python script that can be used to simulate the odds of winning in a simplified version of the card game Blackjack, given a particular starter hand. The program will simulate probabilities and suggest whether you should hit (draw a card) or stay (not draw a card) for the best chance of winning. 
+**Description**: Python scripts that can be used to simulate the odds of winning in a simplified version of the card game Blackjack, given a particular starter hand. The program will simulate probabilities and suggest whether you should hit (draw a card) or stay (not draw a card) for the best chance of winning. `blackjack.py` contains the game engine. `gui.py` contains a Graphical User Interface usable by anyone running Python 3. 
 
-**Demonstrates**: object-oriented programming (OOP).
+**Demonstrates**: object-oriented programming (OOP) for both simulation (`blackjack.py`) and interactivity (`gui.py`).
 
-**Package requirements**: numpy, otherwise all builtin packages.
+**Package requirements**: `numpy`, otherwise all builtin packages.
 
 **Todo**: remaining planned updates to this living script include: allowing user to see one of dealer's cards, allowing dealer to draw, a simple Python-launched GUI version, a web hosted GUI version, increased object orientation. 
 
- *Last updated*: 24 May 2023
+ *Last updated*: 25 May 2023
 
 
 ### Directory: shell-scripting (may 2023)

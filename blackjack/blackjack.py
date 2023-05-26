@@ -57,8 +57,7 @@ class Card:
                     flags=re.IGNORECASE
                     )[0].upper()
                 if ace:
-                    self.value = Ace() 
-                    # TODO self.value = Ace() # context ddependent 
+                    self.value = "Context-dependent, 1 or 11."
 
         return self.value
 
@@ -135,7 +134,7 @@ class Deck:
             return [card for card in self.cards if card.rank==rank]
 
 
-class Hand():
+class Hand:
 
     bust_threshold=22
 
@@ -187,6 +186,69 @@ class Hand():
     def draw_specific_cards(self,cards_to_pull,deck):
         self.hand += deck.draw_specific_cards(cards_to_pull)
 
+
+
+class Interpreter:
+
+    rank_map = {
+        "2":"Two",
+        "3":"Three",
+        "4":"Four",
+        "5":"Five",
+        "6":"Six",
+        "7":"Seven",
+        "8":"Eight",
+        "9":"Nine",
+        "10":"Ten",
+        "J":"Jack",
+        "Q":"Queen",
+        "K":"King",
+        "A":"Ace"
+        }
+
+    suit_map = {
+        "C":"Clubs",
+        "D":"Diamonds",
+        "H":"Hearts",
+        "S":"Spades"
+        }
+    
+    def interpret_card(self,card):        
+
+        interpreted = "the " + self.rank_map.get(card.rank)+" of "+self.suit_map.get(card.suit)
+
+        return interpreted
+
+
+    def place_into_statement(self):
+
+        ics = self.interpreted_cards
+        if len(ics) == 1:
+            statement = ics[0]
+        elif len(ics) == 2:
+            statement = ics[0]+" and "+ics[1]
+        elif len(ics) > 2:
+            statement = ""
+            for card in ics[:-1]:
+                statement += f"{card}, "
+            statement += f"and {ics[-1]}"
+        
+        return statement 
+
+
+    def __init__(self,hand):
+        
+        self.abbrev_cards = hand.hand # or cards? 
+        self.interpreted_cards = [self.interpret_card(card) for card in self.abbrev_cards]
+        self.statement = self.place_into_statement()
+    
+    
+    def __repr__(self):
+        return self.statement
+
+
+    def __str__(self):
+        return self.statement
 
 
 def simulate_hand_draw(number_drawn=2,hand=None,deck=None):
@@ -299,6 +361,7 @@ def avg_dicts(ds:list):
         d_avg[k]=avg_p
     return d_avg
 
+
 # given you randomly draw a card on top of your existing hand, what are the probabilities of different outcomes
 def compare_prob_hit_to_house(base_hand,deck,n_drawn_by_house=2,
                               hand_niters=1e2,house_niters=1e2,
@@ -325,43 +388,54 @@ def compare_prob_hit_to_house(base_hand,deck,n_drawn_by_house=2,
     
     return d_avg
 
-# so, should you hit or stay?
-def hit_results(hand,deck,print_=True):
-    calc_gain_loss_ratio = lambda d: d["win"]/(d["lose"]+d["bust"])
-    calc_p_win_sans_draws = lambda d: d["win"]/(d["win"]+d["lose"]+d["bust"])
 
-    
+calc_gain_loss_ratio = lambda d: d["win"]/(d["lose"]+d["bust"])
+calc_p_win_sans_draws = lambda d: d["win"]/(d["win"]+d["lose"]+d["bust"])
+
+
+# so, should you hit or stay?
+def get_hit_stay_probs(hand,deck):
     stay_hand = deepcopy(hand)
     stay_prob_d = compare_prob_hand_to_house(stay_hand,deck)
     hit_base_hand = deepcopy(hand)
     hit_prob_d = compare_prob_hit_to_house(hit_base_hand,deck)
 
-    stay_glr = calc_gain_loss_ratio(stay_prob_d)
-    hit_glr = calc_gain_loss_ratio(hit_prob_d)
+    return {"stay":stay_prob_d,"hit":hit_prob_d}
 
-    stay_win_no_draws = calc_p_win_sans_draws(stay_prob_d)
-    hit_win_no_draws = calc_p_win_sans_draws(hit_prob_d)
 
-    if print_:
-        print(f"Your hand contains:",[card.rank for card in hand.hand])
-        print(f"If you stay, your chance of winning is \
-{round(stay_win_no_draws*100,1)}% (excluding draws)")
-        print(f"If you hit, your chance of winning is \
-{round(hit_win_no_draws*100,1)}% (excluding draws)")
-              
-        if stay_win_no_draws > hit_win_no_draws:
-            print("You should stay.")
-        elif stay_win_no_draws < hit_win_no_draws:
-            print("You should hit.")
-        else:
-            print("Follow your heart. The odds are the same either way.")
+def get_recommendation(hit_stay_d):
 
+    stay_win_no_draws = calc_p_win_sans_draws(hit_stay_d["stay"])
+    hit_win_no_draws = calc_p_win_sans_draws(hit_stay_d["hit"])
+
+    # better with enum
     if stay_win_no_draws > hit_win_no_draws:
         return "stay"
     elif stay_win_no_draws < hit_win_no_draws:
         return "hit"
     else:
         return "immaterial"
+
+
+def get_reco_text(hit_stay_d):
+
+    stay_win_no_draws = calc_p_win_sans_draws(hit_stay_d["stay"])
+    hit_win_no_draws = calc_p_win_sans_draws(hit_stay_d["hit"])
+
+    str_ = ""
+    str_+=f"If you hit, your estimated chance of winning is \
+{round(hit_win_no_draws*100,1)}% (excluding draws).\n"
+    str_+=f"If you stay, your estimated chance of winning is \
+{round(stay_win_no_draws*100,1)}% (excluding draws). \n"
+            
+    if stay_win_no_draws > hit_win_no_draws:
+        str_+="You should stay."
+    elif stay_win_no_draws < hit_win_no_draws:
+        str_+="You should hit."
+    else:
+        str_+="Follow your heart. The odds are the same either way."
+
+    return str_
 
 
 def check_if_in_deck(rank,suit,deck):
@@ -403,5 +477,3 @@ if __name__ == "__main__":
     # or, uncomment below and specify your own cards
     # drawn_cards = [c("A"),c("9")]
     # hand = Hand(deck=deck,drawn_hand=drawn_cards) 
-
-    hit_results(hand,deck)
