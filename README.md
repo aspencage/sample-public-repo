@@ -10,7 +10,7 @@
 
 **Package requirements**: `numpy`, otherwise all builtin packages.
 
-**Todo**: remaining planned updates to this living script include: allowing user to see one of dealer's cards, allowing dealer to draw, a simple Python-launched GUI version, a web hosted GUI version, increased object orientation. 
+**Todo**: remaining planned updates to this living script include: allowing user to see one of dealer's cards, allowing dealer to draw, a web-hosted GUI version, increased object orientation. 
 
  *Last updated*: 25 May 2023
 
